@@ -6,7 +6,11 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class CA_NimGame {
+<<<<<<< HEAD
 static String inputDataToken = "HcYa0YjXdEVpS4Gp6NWewjE0";
+=======
+static String inputDataToken = "Wo0DziSXaJzlH7p5nW0g+TU4";
+>>>>>>> origin/master
     public static void main(String[] args) throws IOException, InterruptedException {
 
         
