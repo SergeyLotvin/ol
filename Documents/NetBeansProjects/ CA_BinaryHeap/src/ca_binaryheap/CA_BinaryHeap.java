@@ -1,3 +1,6 @@
+//Data Structures& Algorithms in Java Second Edition, Robert Lafore
+//International Standard Book Number: 0-672-32453-9
+//CHAPTER 12 Heaps
 package ca_binaryheap;
 
 import java.io.BufferedReader;
@@ -24,40 +27,61 @@ public class CA_BinaryHeap {
     public static void main(String[] args) throws IOException {
 
         int size=0, j;
-        String str_input="3 9 6 5 7 1 11 2 0 10 4 8 0"; 
+        String str_input="12 7 17 18 31 10 21"; 
         String[] strArr=str_input.split("\\s");
         int[] intArr=new int[strArr.length];
-        for(int i=0; i<strArr.length; i++){intArr[i]=Integer.valueOf(strArr[i]); if(intArr[i]!=0){size++;}}
-        
-
+        for(int i=0; i<strArr.length; i++){intArr[i]=Integer.valueOf(strArr[i]);}
+        size=7;
         Heap theHeap = new Heap(size);
-         
         
-        
-        for (j = 0; j < size; j++) // fill array with
-        { // random nodes
-            int random = (int) (java.lang.Math.random() * 100);
-            Node newNode = new Node(random);
-            theHeap.insertAt(j, newNode);
-            theHeap.incrementSize();
+        for (int q = 0; q < size; q++) {
+            if (intArr[q] != 0) {
+                
+                Node newNode = new Node(intArr[q]);
+                theHeap.insertAt(q, newNode);
+                theHeap.incrementSize();
+
+            }
+            
         }
-        System.out.print("Random: ");
-        theHeap.displayArray(); // display random array
-        for (j = size / 2 - 1; j >= 0; j--) // make random array into heap
+        theHeap.displayArray();
+        theHeap.displayHeap();
+        
+            for (j = size / 2 - 1; j >= 0; j--) // make random array into heap
         {
+                
             theHeap.trickleDown(j);
         }
-        System.out.print("Heap: ");
-        theHeap.displayArray(); // display heap array
-        theHeap.displayHeap(); // display heap
-        for (j = size - 1; j >= 0; j--) // remove from heap and
-        { // store at array end
-            Node biggestNode = theHeap.remove();
-            theHeap.insertAt(j, biggestNode);
-        }
-        System.out.print("Sorted: ");
-        theHeap.displayArray(); // display sorted array
-    } // end main()
+        
+        
+        theHeap.displayHeap();
+        theHeap.remove();
+        theHeap.displayHeap();
+        
+        
+        System.out.println("---------------------------------------------");
+        
+        Scanner scan=new Scanner("35 2 33 22 0 19 0 24 27 15 20 0 32 26 6 30 3 13 0 16 0 5 0 14 9 34 1 11 0 28 23 8 36 29 0 4 25 0");
+        int t=0;
+        while(scan.hasNext()){
+        t=scan.nextInt();
+        if (t!=0){
+                theHeap.insertAt(theHeap.currentSize, new Node(t));
+                theHeap.incrementSize();
+                theHeap.trickleUp(theHeap.currentSize-1);
+                
+        } else {theHeap.remove();}
 
-// -------------------------------------------------------------
+        }
+                        
+
+                
+
+        theHeap.displayHeap();
+                
+
+
+        
+      
+}
 }
